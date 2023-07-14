@@ -65,7 +65,7 @@ body {
 
     <script>
         $(function() {
-            var socket = new WebSocket("wss://https://websocketdap-745ca62aa859.herokuapp.com//ws?username=" + encodeURIComponent($('#username').val()));
+            var socket = new WebSocket("wss://websocketdap-745ca62aa859.herokuapp.com//ws?username=" + encodeURIComponent($('#username').val()));
 
             socket.onmessage = function(event) {
                 var message = JSON.parse(event.data);
