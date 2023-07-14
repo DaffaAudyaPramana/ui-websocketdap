@@ -29,23 +29,43 @@
     <link href="https://unpkg.com/tailwindcss@0.3.0/dist/tailwind.min.css" rel="stylesheet">
     
 </head>
-<body class="bg-grey-lighter min-h-screen flex flex-col" style="background-image: url(2.jpg); background-size: 100px;"></body>
+<style>
+body {
+    background-image: url('1.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: 100% 100%;
+  }
+</style>
+
 <div class="min-h-screen flex flex-col">
-    <div class="container max-w-sm mx-auto items-center justify-center px-2">
-        <div class="bg-green px-6 py-8 rounded shadow-md text-black w-full">
-    <h1 class="mb-8 text-3xl text-center">Hi There!</h1>
+    <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+        <div class="bg-yellow px-6 py-8 rounded shadow-md text-black w-full">
+    <h1 class="mb-8 text-3xl text-center">Hi There 👋 </h1>
     <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-    <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" id="username" placeholder="Username" />
-    <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" id="message" placeholder="Message" />
-    <button id="send" class="w-full text-center py-3 rounded bg-green text-white hover:bg-green-dark focus:outline-none my-1">Send</button>
+
+    <input type="text" 
+    class="block border border-grey-light w-full p-3 rounded mb-4" 
+    id="username" 
+    placeholder="Submit Your Username" />
+   
+    <input type="text" 
+    class="block border border-grey-light w-full p-3 rounded mb-4" 
+    id="message" 
+    placeholder="Write Your Message Here" />
+   <br>
+    <button id="send" class="w-full text-center py-3 rounded bg-grey text-white hover:bg-green-dark focus:outline-none my-1">Propose</button>
     <div id="messages" class="bg-white px-6 py-8 scrool shadow-md text-black w-full"></div><br>
+    <div class="text-center text-sm text-grey-dark mt-4">
+        Your messages will recorded to Heroku
+    </div>
 </div>
     </div>
         </div>
 
     <script>
         $(function() {
-            var socket = new WebSocket("wss://ws-new1-723cde489905.herokuapp.com/ws?username=" + encodeURIComponent($('#username').val()));
+            var socket = new WebSocket("wss://websocketd8-ws-ede3f89417dd.herokuapp.com/ws?username=" + encodeURIComponent($('#username').val()));
 
             socket.onmessage = function(event) {
                 var message = JSON.parse(event.data);
